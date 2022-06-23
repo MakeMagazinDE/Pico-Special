@@ -1,0 +1,23 @@
+; Lässt die Status-LED mit 66% Helligkeit leuchten.
+.program two_third_brightness
+    set pindirs, 1 ; Ziel-Pin zu Ausgabe-Pin machen.
+loop:
+    set pins, 0 ; Ziel-Pin auf LOW setzen.
+    set pins, 1 ; Ziel-Pin auf HIGH setzen.
+    jmp loop    ; Zurück zum Label loop.
+
+; Lässt die Status-LED mit 50% Helligkeit leuchten.
+.program half_brightness
+    set pindirs, 1 ; Ziel-Pin zu Ausgabe-Pin machen.
+.wrap_target
+    set pins, 0 ; Ziel-Pin auf LOW setzen.
+    set pins, 1 ; Ziel-Pin auf HIGH setzen.
+.wrap
+
+; Lässt die Status-LED mit 25% Helligkeit leuchten.
+.program quarter_brightness
+    set pindirs, 1 ; Ziel-Pin zu Ausgabe-Pin machen.
+.wrap_target
+    set pins, 0 [2] ; Ziel-Pin auf LOW setzen und zwei Takt-Zyklen warten.
+    set pins, 1 ; Ziel-Pin auf HIGH setzen.
+.wrap
